@@ -19,6 +19,12 @@ class AskAlaska {
     var results = await connection.query(queryString);
     return results.map(dbMapper.mapLakeData).toList();
   }
+
+  Future<List<Airport>> getAlaskaAirports() async {
+    var queryString = 'SELECT gid,id,fk_region,elev::REAL,name,use,ST_AsEWKB(geom) FROM airports';
+    var results = await connection.query(queryString);
+    return results.map(dbMapper.mapAirportData).toList();
+  }
 }
 
 class AlaskaDBMapper {
@@ -33,6 +39,11 @@ class AlaskaDBMapper {
   Lake mapLakeData(PostgreSQLResultRow row) {
     var lakeGeom = pgParser.parseMultiPolygon(row[2]);
     return Lake(row[0], row[1], lakeGeom);
+  }
+
+  Airport mapAirportData(PostgreSQLResultRow row) {
+    var airportLocation = pgParser.parsePoint(row[6]);
+    return Airport(row[0],row[1],row[2],row[3],row[4],row[5],airportLocation);
   }
 
 

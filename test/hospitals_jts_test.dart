@@ -22,7 +22,7 @@ void main() async {
     askAlaska = AskAlaska(connection);
   });
 
-  test('PostgisEWKTParser.parseLineString should parse Alaska Rivers successfully', () async{
+  test('PostgisEWKTParser.parseMultiLineString should parse Alaska Rivers successfully', () async{
     var results = await askAlaska.getAlaskaRivers();
     expect(results != null, true);
   });
@@ -30,7 +30,20 @@ void main() async {
   test('PostgisEWKTParser.parseMultiPolygon should parse Alaska Lakes', () async {
     var results = await askAlaska.getAlaskaLakes();
     expect(results.length,15);
-    results.forEach((e) => print(e.geometry));
+    // results.forEach((e) => print(e.geometry));
   });
+
+  test('PostgisEWKTParser.parsePoint should parse Alaska Airports', () async {
+    var results = await askAlaska.getAlaskaAirports();
+    expect(results.length, 76);
+    results.forEach((e) {
+      expect(e.location.SRID, 0);
+    });    
+  });
+
+
+
+
+
 
 }
