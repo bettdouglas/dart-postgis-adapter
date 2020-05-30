@@ -1,6 +1,7 @@
 import 'package:hospitals_jts/alaska/models/models.dart';
 import 'package:hospitals_jts/postgis_wrapper/ewkt_parser.dart';
 import 'package:postgres/postgres.dart';
+import 'package:dart_jts/dart_jts.dart';
 
 class AskAlaska {
   final PostgreSQLConnection connection;
@@ -24,6 +25,21 @@ class AskAlaska {
     var queryString = 'SELECT gid,id,fk_region,elev::REAL,name,use,ST_AsEWKB(geom) FROM airports';
     var results = await connection.query(queryString);
     return results.map(dbMapper.mapAirportData).toList();
+  }
+
+  Future<bool> insertGeom(Geometry geom) async {
+    var ewkt = WKBWriter().write(geom);
+    print(ewkt.toString());
+    var statement = 'INSERT INTO geoms(geom) values(@wkb)';
+    try {
+      await connection.execute(statement,substitutionValues: {
+        'wkb' : ewkt
+      });
+      return true;
+    } catch (e) {
+      print(e);
+      return false;
+    }
   }
 }
 

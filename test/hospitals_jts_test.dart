@@ -1,3 +1,4 @@
+import 'package:dart_jts/dart_jts.dart';
 import 'package:hospitals_jts/alaska/alaska-db-adapter.dart';
 import 'package:postgres/postgres.dart';
 import 'package:test/test.dart';
@@ -39,6 +40,22 @@ void main() async {
     results.forEach((e) {
       expect(e.location.SRID, 0);
     });    
+  });
+
+  test('Inserting data should be possible via ST_GeomFromEWKB where geometry is valid', () async {
+    final airports = await askAlaska.getAlaskaAirports();
+    final rivers = await askAlaska.getAlaskaRivers();
+    final lakes = await askAlaska.getAlaskaLakes();
+
+    // var ewkb = WKBWriter();
+    
+      for (var element in airports) {
+        print(element.name);
+        var expected = await askAlaska.insertGeom(element.location);
+        expect(expected, true);
+      } 
+    // });
+
   });
 
 

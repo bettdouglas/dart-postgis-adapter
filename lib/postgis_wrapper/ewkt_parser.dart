@@ -81,6 +81,4 @@ class PostgisEWKTParser extends PostgisGeometryParser {
     assert(multiCurve is MultiLineString,throw EwkbFormatException('$ewkt is not valid MultiPoint. Ensure your format is EWKB & is a MultiPoint'));
     return multiCurve;  
   }
-  
-
 }
