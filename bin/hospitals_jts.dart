@@ -1,8 +1,8 @@
 import 'package:dart_jts/dart_jts.dart';
 import 'package:hospitals_jts/postgis_wrapper/ewkt_parser.dart';
+import 'package:hospitals_jts/protos/dart-out/tweet.pbgrpc.dart';
 import 'package:postgres/postgres.dart';
 import 'package:grpc/grpc.dart';
-import 'package:hospitals_jts/dart-out/tweet.pbgrpc.dart';
 
 void main(List<String> arguments) async {
   // var connection = PostgreSQLConnection(
