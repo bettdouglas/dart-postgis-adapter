@@ -1,6 +1,5 @@
 import 'package:dart_jts/dart_jts.dart';
 import 'package:hospitals_jts/postgis_wrapper/ewkt_parser.dart';
-import 'package:hospitals_jts/protos/dart-out/tweet.pbgrpc.dart';
 import 'package:postgres/postgres.dart';
 import 'package:grpc/grpc.dart';
 
@@ -23,24 +22,6 @@ void main(List<String> arguments) async {
   // var hospitals = query.map((e) => Hospital.fromRow(e));
 
   // hospitals.forEach((e)=>print(e.geom.SRID));
-
-  var searchTerm = SearchTerm()..searchterm = 'Work Dart';
-
-  final channel = ClientChannel(
-    'localhost',
-    port: 50051,
-    options: const ChannelOptions(
-      credentials: ChannelCredentials.insecure(),
-    ),
-  );
-
-  var client = GetTweetsClient(channel);
-
-  var tweet = await client.searchATweet(searchTerm);
-  var tweets = await client.searchTweets(searchTerm);
-
-  print(tweet);
-  print(tweets);
 }
 
 class Hospital {
