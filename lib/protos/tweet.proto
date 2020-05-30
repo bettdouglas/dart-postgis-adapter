@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+message Tweet {
+    int32 id = 1;
+    string tweet = 2;
+    int32 likes = 3;
+    string location = 4;
+}
+
+message SearchTerm {
+    string searchterm = 1;
+}
+
+message Tweets {
+    repeated Tweet tweets = 1;
+}
+
+service GetTweets {
+    rpc SearchTweets (SearchTerm) returns (Tweets);
+    rpc SearchATweet (SearchTerm) returns (Tweet);
+}
+
+
+//protoc -I lib/src/protos/ lib/src/protos/protos.proto --dart_out=grpc:lib/src/protos/generated/
