@@ -1,4 +1,3 @@
-import 'package:dart_jts/dart_jts.dart';
 import 'package:hospitals_jts/alaska/alaska-db-adapter.dart';
 import 'package:postgres/postgres.dart';
 import 'package:test/test.dart';
@@ -47,14 +46,12 @@ void main() async {
     final rivers = await askAlaska.getAlaskaRivers();
     final lakes = await askAlaska.getAlaskaLakes();
 
-    // var ewkb = WKBWriter();
     
       for (var element in airports) {
         print(element.name);
         var expected = await askAlaska.insertGeom(element.location);
         expect(expected, true);
       } 
-    // });
 
   });
 
