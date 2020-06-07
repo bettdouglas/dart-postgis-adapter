@@ -7,7 +7,9 @@ environment:
 dependencies:
   path: ^1.7.0
   dart_jts: any
-  postgres: any
+  postgres: 
+    git:
+      url: https://github.com/bettdouglas/postgresql-dart.git
 
 dev_dependencies:
   pedantic: ^1.9.0
