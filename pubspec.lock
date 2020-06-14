@@ -243,8 +243,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: HEAD
-      resolved-ref: ea2fc20b101f83827adb92893e6b48f333a40f61
+      ref: oid-connection-test
+      resolved-ref: "637356193f18a5c072372dafa7131176dfb76d27"
       url: "https://github.com/bettdouglas/postgresql-dart.git"
     source: git
     version: "2.1.1"
