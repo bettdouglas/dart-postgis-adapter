@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 name: alaska
+=======
+name: hospitals_jts
+>>>>>>> origin/master
 description: A sample dart example showing how to read data from postgis
 
 environment:
@@ -7,10 +11,16 @@ environment:
 dependencies:
   path: ^1.7.0
   dart_jts: any
+<<<<<<< HEAD
   postgres:
     path: ../postgresql-dart
     # git:
     #   url: https://github.com/bettdouglas/postgresql-dart.git
+=======
+  postgres: 
+    git:
+      url: https://github.com/bettdouglas/postgresql-dart.git
+>>>>>>> origin/master
 
 dev_dependencies:
   pedantic: ^1.9.0

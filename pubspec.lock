@@ -242,9 +242,15 @@ packages:
   postgres:
     dependency: "direct main"
     description:
+<<<<<<< HEAD
       path: "../postgresql-dart"
       relative: true
     source: path
+=======
+      name: postgres
+      url: "https://pub.dartlang.org"
+    source: hosted
+>>>>>>> origin/master
     version: "2.1.1"
   pub_semver:
     dependency: transitive
