@@ -1,0 +1,1 @@
+ogr2ogr -f "PostgreSQL" "PG:host=127.0.0.1 user=myuser dbname=mydb password=mypassw0rd" "C:/path/to/some_shapefile.shp" -lco GEOMETRY_NAME=the_geom -lco FID=gid -lco PRECISION=no -nlt PROMOTE_TO_MULTI -nln new_layername -overwrite
